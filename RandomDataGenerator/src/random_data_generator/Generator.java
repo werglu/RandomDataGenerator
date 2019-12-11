@@ -68,76 +68,34 @@ public class Generator {
 	private static List<String> GetFemaleNames()
 	{
 	    File file = new File("first-f.txt");
-		List<String> names = new ArrayList<String>();
-		
-		try 
-		{	
-			Scanner sc = new Scanner(file);
-			while (sc.hasNextLine()) 
-			{
-	            String i = sc.next();	    
-	            names.add(i);
-	        }
-	        sc.close();
-		} 
-		catch (FileNotFoundException e)
-		{
-			e.printStackTrace();
-		}
 			
-		return names;
+		return ScanFile(file);
 	}
 
 	private static List<String> GetMaleNames()
 	{
 	    File file = new File("first-m.txt");
-		List<String> names = new ArrayList<String>();
-		
-		try 
-		{
-			Scanner sc = new Scanner(file);
-			while (sc.hasNextLine()) 
-			{
-	            String i = sc.next();
-	            names.add(i);
-	        }
-	        sc.close();
-		} 
-		catch (FileNotFoundException e)
-		{
-			e.printStackTrace();
-		}
-			
-		return names;
+
+	    return ScanFile(file);
 	}
 	
 	private static List<String> GetSurnames()
 	{
 	    File file = new File("last.txt");
-		List<String> names = new ArrayList<String>();
-		
-		try 
-		{
-			Scanner sc = new Scanner(file);
-			while (sc.hasNextLine()) 
-			{
-	            String i = sc.next();
-	            names.add(i);
-	        }
-	        sc.close();
-		} 
-		catch (FileNotFoundException e)
-		{
-			e.printStackTrace();
-		}
-			
-		return names;
+
+		return ScanFile(file);
 	}
 	
 	private static List<String> GetPesel()
 	{
 	    File file = new File("pesel.txt");
-		List<String> names = new ArrayList<String>();
+	
+		return ScanFile(file);
+	}
+	
+	private static List<String> ScanFile(File file)
+	{
+		List<String> list = new ArrayList<String>();
 		
 		try 
 		{
@@ -145,7 +103,7 @@ public class Generator {
 			while (sc.hasNextLine()) 
 			{
 	            String i = sc.next();
-	            names.add(i);
+	            list.add(i);
 	        }
 	        sc.close();
 		} 
@@ -153,8 +111,8 @@ public class Generator {
 		{
 			e.printStackTrace();
 		}
-			
-		return names;
+		
+		return list;
 	}
 	
 	private static List<String> GetCities()
