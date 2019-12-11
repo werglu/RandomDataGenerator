@@ -13,6 +13,7 @@ public class Generator {
 	 static List<String> maleNames = GetMaleNames();
 	 static List<String> surnames = GetSurnames();
 	 static List<String> pesels = GetPesel();
+	 static List<String> cities = GetCities();
      static List<Person> people = new ArrayList<Person>();
 	 
 	public static void main(String[] args) {
@@ -32,6 +33,8 @@ public class Generator {
 			boolean isFemale = rand.nextBoolean();
 			person.surname = surnames.get(rand.nextInt(surnames.size()));
 			person.pesel = pesels.get(rand.nextInt(pesels.size()));
+			person.city = cities.get(rand.nextInt(cities.size()));
+
 			if(isFemale)
 			{
 				person.name = femaleNames.get(rand.nextInt(femaleNames.size()));
@@ -142,6 +145,29 @@ public class Generator {
 			while (sc.hasNextLine()) 
 			{
 	            String i = sc.next();
+	            names.add(i);
+	        }
+	        sc.close();
+		} 
+		catch (FileNotFoundException e)
+		{
+			e.printStackTrace();
+		}
+			
+		return names;
+	}
+	
+	private static List<String> GetCities()
+	{
+	    File file = new File("cc.txt");
+		List<String> names = new ArrayList<String>();
+		
+		try 
+		{
+			Scanner sc = new Scanner(file);
+			while (sc.hasNextLine()) 
+			{
+	            String i = sc.nextLine();
 	            names.add(i);
 	        }
 	        sc.close();
