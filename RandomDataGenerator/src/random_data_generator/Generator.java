@@ -6,6 +6,11 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 import java.util.Scanner;
+import jxl.Workbook;
+import jxl.write.WritableSheet;
+import jxl.write.WritableWorkbook;
+import jxl.write.Label;
+import jxl.write.WriteException;
 
 public class Generator {
 
@@ -17,10 +22,36 @@ public class Generator {
      static List<Person> people = new ArrayList<Person>();
 	 
 	public static void main(String[] args) {
-			
 		Scanner scan = new Scanner(System.in);
 		int i = scan.nextInt();	
 		GeneratePeople(i);
+		System.out.println("File name (*.xls): ");
+		String filePath = scan.next();
+		scan.close();
+		SavePeople(filePath.endsWith(".xls") ? filePath : filePath + ".xls");
+	}
+
+	private static void SavePeople(String filePath) {
+		try {
+            WritableWorkbook workbook = Workbook.createWorkbook(new File(filePath));
+            WritableSheet sheet = workbook.createSheet("data", 0);
+            int ind = 0;
+            for (Person person : people) {
+            	sheet.addCell(new Label(0, ind, person.name));
+            	sheet.addCell(new Label(1, ind, person.surname));
+            	sheet.addCell(new Label(2, ind, person.pesel));
+            	sheet.addCell(new Label(3, ind, person.city));
+            	sheet.addCell(new Label(4, ind, person.street));
+            	sheet.addCell(new Label(5, ind, person.idCardNumber));
+            	sheet.addCell(new Label(6, ind, person.bankAccount));
+            	ind++;
+            }
+            workbook.write();
+            workbook.close();
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+        }
 	}
 	
 	private static void GeneratePeople(int numberOfPeople)
