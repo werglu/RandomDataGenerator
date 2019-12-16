@@ -23,12 +23,17 @@ public class Generator {
 	 
 	public static void main(String[] args) {
 		Scanner scan = new Scanner(System.in);
-		int i = scan.nextInt();	
-		GeneratePeople(i);
+		System.out.println("Number of people: ");
+		int i = scan.nextInt();
 		System.out.println("File name (*.xls): ");
 		String filePath = scan.next();
 		scan.close();
-		SavePeople(filePath.endsWith(".xls") ? filePath : filePath + ".xls");
+		doWork(i, filePath.endsWith(".xls") ? filePath : filePath + ".xls");
+	}
+
+	public static void doWork(int i, String filePath) {
+		GeneratePeople(i);
+		SavePeople(filePath);
 	}
 
 	private static void SavePeople(String filePath) {
