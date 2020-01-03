@@ -1,2 +1,3 @@
 module RandomDataGenerator {
+	//requires jxl;
 }

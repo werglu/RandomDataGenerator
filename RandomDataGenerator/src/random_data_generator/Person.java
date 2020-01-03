@@ -18,7 +18,7 @@ public class Person {
 	@Override
 	public String toString()
 	{
-		return name + " " +surname + " " + pesel + " " + city;
+		return name + " " +surname + " " + pesel + " " + city + " " + street + " " + idCardNumber + " " + bankAccount;
 	}
 
 }
